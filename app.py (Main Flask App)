@@ -1,0 +1,31 @@
+from flask import Flask, render_template, request, redirect
+
+app = Flask(__name__)
+
+clients = []
+requests_list = []
+
+@app.route('/')
+def index():
+    return render_template('index.html', clients=clients, requests=requests_list)
+
+@app.route('/add_client', methods=['GET', 'POST'])
+def add_client():
+    if request.method == 'POST':
+        name = request.form['name']
+        age = request.form['age']
+        clients.append({'name': name, 'age': age})
+        return redirect('/')
+    return render_template('add_client.html')
+
+@app.route('/add_request', methods=['GET', 'POST'])
+def add_request():
+    if request.method == 'POST':
+        details = request.form['details']
+        client = request.form['client']
+        requests_list.append({'details': details, 'client': client})
+        return redirect('/')
+    return render_template('add_request.html')
+
+if __name__ == '__main__':
+    app.run(debug=True)
