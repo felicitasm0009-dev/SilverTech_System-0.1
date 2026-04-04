@@ -1,0 +1,12 @@
+SilverTech-System/
+│
+├── app.py
+├── requirements.txt
+│
+├── templates/
+│   ├── index.html
+│   ├── add_client.html
+│   └── add_request.html
+│
+└── static/
+    └── style.css
