@@ -7,7 +7,12 @@
     <h1>Add a New Service Request</h1>
     <form method="POST">
         Details: <input type="text" name="details" required><br>
-        Client: <input type="text" name="client" required><br>
+        Client:
+        <select name="client_id" required>
+            {% for client in clients %}
+                <option value="{{ client.id }}">{{ client.name }} (Age: {{ client.age }})</option>
+            {% endfor %}
+        </select><br>
         <button type="submit">Add Request</button>
     </form>
     <a href="/">Back to Dashboard</a>
