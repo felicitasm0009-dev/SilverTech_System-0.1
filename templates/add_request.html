@@ -1,20 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Add Request</title>
-</head>
-<body>
-    <h1>Add a New Service Request</h1>
-    <form method="POST">
-        Details: <input type="text" name="details" required><br>
-        Client:
-        <select name="client_id" required>
-            {% for client in clients %}
-                <option value="{{ client.id }}">{{ client.name }} (Age: {{ client.age }})</option>
-            {% endfor %}
-        </select><br>
-        <button type="submit">Add Request</button>
-    </form>
-    <a href="/">Back to Dashboard</a>
-</body>
-</html>
+class Request(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    details = db.Column(db.String(200), nullable=False)
+    specific_need = db.Column(db.String(200), nullable=True)  # NEW FIELD
+    status = db.Column(db.String(50), default="Pending")
+    client_id = db.Column(db.Integer, db.ForeignKey('client.id'), nullable=False)
