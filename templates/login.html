@@ -1,0 +1,22 @@
+class Employer(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(100), unique=True, nullable=False)
+    password = db.Column(db.String(200), nullable=False)
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        employer = Employer.query.filter_by(username=username).first()
+        if employer and check_password_hash(employer.password, password):
+            session['employer_id'] = employer.id
+            return redirect(url_for('index'))
+        else:
+            return "Invalid credentials"
+    return render_template('login.html')
+
+@app.route('/logout')
+def logout():
+    session.pop('employer_id', None)
+    return redirect(url_for('login'))
