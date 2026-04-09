@@ -1,31 +1,15 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 20px;
-    background-color: #f4f4f9;
+.requests-table {
+    width: 100%;          /* Full page width */
+    border-collapse: collapse;
+    margin-top: 20px;
 }
 
-h1 {
-    color: #333;
+.requests-table th, .requests-table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
 }
 
-a {
-    margin-right: 10px;
-    text-decoration: none;
-    color: #007BFF;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
-ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-li {
-    background: #fff;
-    margin: 5px 0;
-    padding: 8px;
-    border: 1px solid #ddd;
+.requests-table th {
+    background-color: #f2f2f2;
 }
