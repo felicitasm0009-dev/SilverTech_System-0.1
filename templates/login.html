@@ -13,7 +13,7 @@ def login():
             session['employer_id'] = employer.id
             return redirect(url_for('index'))
         else:
-            return "Invalid credentials"
+            return render_template('login.html', error="Invalid credentials")
     return render_template('login.html')
 
 @app.route('/logout')
