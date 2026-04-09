@@ -1,6 +1,19 @@
 class Request(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     details = db.Column(db.String(200), nullable=False)
-    specific_need = db.Column(db.String(200), nullable=True)  # NEW FIELD
+    specific_need = db.Column(db.String(200), nullable=True)
     status = db.Column(db.String(50), default="Pending")
     client_id = db.Column(db.Integer, db.ForeignKey('client.id'), nullable=False)
+
+@app.route('/add_request', methods=['GET', 'POST'])
+def add_request():
+    clients = Client.query.all()
+    if request.method == 'POST':
+        details = request.form['details']
+        specific_need = request.form['specific_need']
+        client_id = request.form['client_id']
+        new_request = Request(details=details, specific_need=specific_need, client_id=int(client_id))
+        db.session.add(new_request)
+        db.session.commit()
+        return redirect(url_for('index'))
+    return render_template('add_request.html', clients=clients)
