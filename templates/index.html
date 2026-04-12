@@ -1,3 +1,17 @@
+<!-- Clients Section -->
+<h2>Clients</h2>
+<ul>
+    {% for client in clients %}
+    <li>
+        {{ client.name }} (Age: {{ client.age }})
+        <a href="{{ url_for('client_profile', id=client.id) }}">View Profile</a>
+    </li>
+    {% endfor %}
+</ul>
+<a href="{{ url_for('add_client') }}">Add Client</a>
+
+<!-- Requests Section -->
+<h2>Requests</h2>
 <table class="requests-table">
     <tr>
         <th>Details</th>
@@ -25,3 +39,4 @@
     </tr>
     {% endfor %}
 </table>
+<a href="{{ url_for('add_request') }}">Add Request</a>
