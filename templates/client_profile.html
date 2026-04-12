@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Client Profile</title>
+</head>
+<body>
+    <h1>{{ client.name }} (Age: {{ client.age }})</h1>
+    <h2>Bookings</h2>
+    <table border="1">
+        <tr>
+            <th>Accommodation</th>
+            <th>Itinerary</th>
+            <th>Date</th>
+        </tr>
+        {% for booking in client.bookings %}
+        <tr>
+            <td>{{ booking.accommodation }}</td>
+            <td>{{ booking.itinerary }}</td>
+            <td>{{ booking.date }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <p><a href="{{ url_for('add_booking') }}">Add Booking</a></p>
+</body>
+</html>
