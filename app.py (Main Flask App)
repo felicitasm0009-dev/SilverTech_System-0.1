@@ -1,5 +1,7 @@
-class Client(db.Model):
+class Booking(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(100), nullable=False)
-    age = db.Column(db.Integer, nullable=False)
-    requests = db.relationship('Request', backref='client', lazy=True)
+    client_id = db.Column(db.Integer, db.ForeignKey('client.id'), nullable=False)
+    accommodation = db.Column(db.String(200), nullable=False)
+    itinerary = db.Column(db.String(500), nullable=False)
+    date = db.Column(db.String(50), nullable=False)
+    client = db.relationship('Client', backref='bookings')
