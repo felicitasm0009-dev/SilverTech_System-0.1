@@ -1,12 +1,16 @@
-SilverTech-System/
+SilverTech_System-0.1/
 │
-├── app.py
-├── requirements.txt
+├── app.py                  ← main Flask app (now includes Booking model + routes)
+├── requirements.txt        ← dependencies
+├── README.md               ← project documentation
 │
-├── templates/
-│   ├── index.html
+├── templates/              ← all HTML templates
+│   ├── index.html          ← dashboard (now with “View Profile” links)
+│   ├── login.html
 │   ├── add_client.html
-│   └── add_request.html
+│   ├── add_request.html
+│   ├── add_booking.html    ← NEW (form for bookings)
+│   └── client_profile.html ← NEW (shows client details + bookings)
 │
 └── static/
-    └── style.css
+    └── style.css           ← CSS (update with .requests-table styling)
